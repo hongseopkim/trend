@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e4002b">
+<title>TREND KOREA 2027 | ALPHA SHEEP Insight Brief</title>
+<style>
+:root{
+  --red:#e4002b;--red-dark:#b90024;--ink:#17191d;--muted:#68707b;
+  --paper:#f6f6f3;--white:#fff;--line:#e5e6e8;--soft:#f0f1f2;
+  --navy:#172331;--blue:#426b8c;--green:#4f806b;--gold:#a87b36;
+  --shadow:0 22px 70px rgba(13,22,32,.16);
+}
+@font-face{font-family:"SCK-Light";src:local("SavetheChildren Light"),local("\C138\C774\BE0C\B354\CE60\B4DC\B7F0\20Light");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"SCK-Medium";src:local("SavetheChildren Medium"),local("\C138\C774\BE0C\B354\CE60\B4DC\B7F0\20Medium");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"SCK-Bold";src:local("SavetheChildren Bold"),local("\C138\C774\BE0C\B354\CE60\B4DC\B7F0\20Bold");font-style:normal;font-weight:400;font-display:swap}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#dfe1e4;color:var(--ink);
+  font-family:"SCK-Light","Malgun Gothic",sans-serif;font-weight:400;font-synthesis:none}
+button{font:inherit}
+#stage{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 18% 20%,#fff 0,#eceeef 45%,#dfe1e4 100%);overflow:hidden}
+#deck{position:relative;width:min(100vw,177.777vh);height:min(100vh,56.25vw);max-width:1920px;max-height:1080px;
+  aspect-ratio:16/9;background:var(--paper);box-shadow:var(--shadow);overflow:hidden;isolation:isolate;perspective:1800px}
+#deck:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:30;
+  background:linear-gradient(110deg,transparent 0 70%,rgba(255,255,255,.24) 78%,transparent 86%);
+  opacity:.26}
+.topline{position:absolute;left:0;top:0;width:100%;height:7px;background:var(--red);z-index:20}
+.deck-head{position:absolute;top:25px;left:4.2%;right:9%;display:flex;align-items:center;justify-content:space-between;
+  z-index:10;color:#6e747d;font-size:clamp(9px,.75vw,13px);letter-spacing:.12em;text-transform:uppercase}
+.brand{font-weight:800;color:var(--ink);letter-spacing:.08em}
+.brand b{color:var(--red)}
+.progress{position:absolute;top:0;left:0;height:7px;width:0;background:#8d001c;z-index:21;transition:width .45s ease}
+.slide{position:absolute;inset:0;padding:7.8% 9.2% 7.2% 7.2%;opacity:0;visibility:hidden;
+  transform:translateX(5%) rotateY(-5deg) scale(.985);transform-origin:left center;backface-visibility:hidden;
+  transition:opacity .48s ease,transform .72s cubic-bezier(.16,.84,.24,1),visibility .48s;
+  overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.slide.active{opacity:1;visibility:visible;transform:translateX(0) rotateY(0) scale(1);z-index:2}
+.slide.exit-left{opacity:0;transform:translateX(-7%) rotateY(4deg) scale(.985)}
+.slide.exit-right{opacity:0;transform:translateX(7%) rotateY(-4deg) scale(.985)}
+.slide:after{content:"";position:absolute;left:7.2%;right:9.2%;bottom:4.2%;height:1px;background:#dedfe1}
+.slide-number{position:absolute;right:9.2%;bottom:2.1%;font-size:11px;color:#90959d;letter-spacing:.12em}
+.kicker{font-size:clamp(10px,.9vw,15px);font-weight:800;letter-spacing:.18em;color:var(--red);margin-bottom:1.1em}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(36px,5.5vw,92px);line-height:1.03;letter-spacing:-.055em;margin-bottom:.24em}
+h2{font-size:clamp(27px,3.1vw,52px);line-height:1.12;letter-spacing:-.045em;margin-bottom:.5em}
+h3{font-size:clamp(15px,1.45vw,24px);line-height:1.25;margin-bottom:.55em}
+.lead{font-size:clamp(15px,1.55vw,25px);line-height:1.55;color:#3f4650;max-width:900px}
+.small{font-size:clamp(10px,.85vw,14px);line-height:1.55;color:var(--muted)}
+.red{color:var(--red)}
+.rule{width:56px;height:5px;background:var(--red);margin:1.1em 0 1.35em}
+.grid{display:grid;gap:14px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:clamp(13px,1.4vw,23px);
+  box-shadow:0 7px 22px rgba(22,31,42,.045)}
+.card.dark{background:var(--navy);color:#fff;border-color:var(--navy)}
+.card.redwash{background:#fff1f3;border-color:#f5cbd2}
+.card h3{margin-bottom:.4em}
+.card p:last-child{margin-bottom:0}
+.metric{font-size:clamp(24px,3vw,48px);font-weight:850;letter-spacing:-.05em;color:var(--red);line-height:1}
+.tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;background:#f1f2f3;
+  color:#555e68;font-size:clamp(9px,.72vw,12px);font-weight:750}
+.tag.redtag{background:#ffe7eb;color:#b90024}
+.pillrow{display:flex;gap:8px;flex-wrap:wrap;margin:1.1em 0}
+.bigquote{font-size:clamp(20px,2.3vw,38px);font-weight:800;line-height:1.38;letter-spacing:-.04em;
+  border-left:5px solid var(--red);padding-left:22px;max-width:980px}
+.callout{background:var(--navy);color:#fff;border-radius:17px;padding:clamp(16px,2vw,30px);display:flex;gap:16px;align-items:flex-start}
+.callout .mark{font-size:clamp(25px,3vw,44px);color:#ff536e;line-height:1}
+.callout p{margin:0;color:#e8edf1;font-size:clamp(12px,1vw,16px);line-height:1.55}
+.list{display:grid;gap:10px}
+.listitem{display:flex;gap:12px;align-items:flex-start;font-size:clamp(12px,1.05vw,17px);line-height:1.48}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--red);margin-top:.45em;flex:0 0 auto}
+.label{font-size:clamp(9px,.72vw,12px);font-weight:800;letter-spacing:.12em;color:#818892;text-transform:uppercase}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.flow .node{padding:12px 15px;background:#fff;border:1px solid var(--line);border-radius:11px;font-size:clamp(10px,.9vw,14px);font-weight:750}
+.flow .arrow{color:var(--red);font-weight:900;font-size:20px}
+.barlist{display:grid;gap:12px}
+.barline{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;font-size:clamp(10px,.9vw,14px)}
+.track{height:12px;border-radius:20px;background:#e8eaec;overflow:hidden}
+.fill{height:100%;border-radius:20px;background:var(--red)}
+.number{font-size:clamp(24px,2.5vw,40px);font-weight:900;color:var(--red);letter-spacing:-.06em}
+.quote-small{font-size:clamp(12px,1.1vw,18px);font-weight:750;line-height:1.5}
+.footnote{font-size:clamp(8px,.68vw,11px);color:#9298a0;line-height:1.4;margin-top:12px}
+.cover{background:linear-gradient(118deg,#fff 0 57%,#f4f4f1 57% 100%)}
+.cover .cover-title{position:relative;z-index:2}
+.cover .alpha{font-size:clamp(38px,6.5vw,110px);font-weight:950;letter-spacing:-.07em;color:var(--red);line-height:.92}
+.cover .cover-sub{font-size:clamp(14px,1.5vw,24px);font-weight:650;color:#414851;margin-top:1.3em}
+.cover-art{position:absolute;right:4%;top:13%;width:43%;height:75%;display:flex;align-items:center;justify-content:center}
+.cover-art svg{width:100%;height:100%}
+.cover-bottom{position:absolute;left:7.2%;bottom:8%;font-size:clamp(9px,.75vw,13px);letter-spacing:.16em;color:#7e858e}
+.keyword-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px}
+.keyword-head .en{font-size:clamp(11px,.95vw,16px);font-weight:700;color:#969ca4;letter-spacing:.05em}
+.keyword-number{font-size:clamp(42px,6vw,96px);font-weight:950;color:#f0d5da;line-height:.8;letter-spacing:-.08em}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;min-height:0}
+.visualbox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:clamp(14px,1.5vw,24px);min-height:220px}
+.visualbox svg{width:100%;height:auto;max-height:270px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.compare>div{padding:14px;border-radius:12px;background:#f2f3f4}
+.compare>div:last-child{background:#fff0f2;border:1px solid #f4c9d0}
+.compare strong{display:block;font-size:clamp(11px,1vw,16px);margin-bottom:7px}
+.compare p{font-size:clamp(10px,.85vw,14px);line-height:1.45;color:#59616c;margin:0}
+.insightline{display:flex;gap:12px;align-items:flex-start;margin-top:12px}
+.insightline b{min-width:90px;color:var(--red);font-size:clamp(10px,.85vw,14px)}
+.insightline span{font-size:clamp(10px,.9vw,15px);line-height:1.45;color:#4d5560}
+.map-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.map-item{border-radius:12px;background:#fff;border:1px solid var(--line);padding:12px;min-height:82px}
+.map-item b{display:block;font-size:clamp(10px,.95vw,15px);margin-bottom:5px}
+.map-item span{font-size:clamp(8px,.7vw,11px);color:#7a828c}
+.map-item em{font-style:normal;color:var(--red);font-weight:850;font-size:clamp(9px,.72vw,12px)}
+#rail{position:absolute;z-index:50;right:1.3%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px}
+.railbtn{width:54px;height:54px;border:1px solid rgba(255,255,255,.8);border-radius:15px;background:rgba(255,255,255,.9);
+  box-shadow:0 7px 22px rgba(20,30,40,.12);color:#343b44;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;transition:.2s}
+.railbtn:hover{background:var(--red);color:#fff;transform:translateX(-3px)}
+.railbtn .ico{font-size:19px;line-height:1}
+.railbtn small{font-size:8px;font-weight:800;letter-spacing:-.02em}
+#drawer{position:absolute;z-index:80;right:0;top:0;height:100%;width:min(430px,42%);background:#fff;
+  box-shadow:-20px 0 60px rgba(10,20,30,.22);padding:28px 24px;transform:translateX(105%);
+  transition:transform .42s cubic-bezier(.2,.8,.2,1);overflow:auto}
+#drawer.open{transform:translateX(0)}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.drawer-top h3{margin:0}
+.close{border:0;background:#f1f2f3;border-radius:9px;padding:8px 12px;cursor:pointer}
+.drawer-intro{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:18px}
+.drawer-section{margin:18px 0}
+.drawer-visual{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0 18px}
+.drawer-viz{border-radius:11px;padding:12px;background:#f2f3f4;border-left:4px solid var(--red)}
+.drawer-viz:nth-child(2){border-left-color:var(--blue)}
+.drawer-viz:nth-child(3){border-left-color:var(--green)}
+.drawer-viz:nth-child(4){border-left-color:var(--gold)}
+.drawer-viz b{display:block;font-size:11px;letter-spacing:.08em}
+.drawer-viz span{display:block;font-size:10px;color:#7a828c;margin-top:5px}
+.drawer-section h4{font-size:11px;letter-spacing:.1em;color:#8a9098;margin:0 0 9px}
+.drawer-key{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;padding:10px 8px;
+  border-bottom:1px solid #eff0f1;cursor:pointer;border-radius:8px}
+.drawer-key:hover{background:#fff0f2}
+.drawer-key .n{color:var(--red);font-size:11px;font-weight:900}
+.drawer-key b{font-size:13px}
+.drawer-key span:last-child{font-size:10px;color:#858c95}
+.drawer-bottom{font-size:10px;color:#9299a2;line-height:1.5;margin-top:20px}
+#scrim{position:absolute;inset:0;z-index:70;background:rgba(17,24,32,.26);opacity:0;visibility:hidden;transition:.3s}
+#scrim.show{opacity:1;visibility:visible}
+#help{position:absolute;z-index:40;left:7.2%;bottom:2.1%;font-size:10px;color:#9aa0a7;letter-spacing:.04em}
+#toast{position:absolute;z-index:100;left:50%;bottom:8%;transform:translate(-50%,20px);opacity:0;
+  background:#20262d;color:#fff;padding:10px 16px;border-radius:999px;font-size:11px;transition:.25s;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+.source-list{display:grid;gap:9px}
+.source-list a{color:#39424d;text-decoration:none;border-bottom:1px solid #e5e7e9;padding-bottom:8px;font-size:clamp(9px,.75vw,12px)}
+.source-list a:hover{color:var(--red)}
+.deck-meta{display:flex;align-items:center;gap:12px}
+.font-status{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;background:#fff3d8;color:#895a00;font-size:clamp(8px,.65vw,10px);letter-spacing:0;font-family:"SCK-Medium",sans-serif}
+.font-status.ok{background:#e8f4ec;color:#2f7047}
+.font-status.warn{background:#fff0e7;color:#9a4a12}
+/* Official Save the Children type roles: Bold / Medium / Light */
+#deck,#deck *{font-weight:400!important;font-synthesis:none}
+#deck h1,#deck h2,#deck .alpha,#deck .bigquote,#deck .metric,#deck .number,#deck .keyword-number,#deck .brand,#deck .drawer-key .n,#deck .map-item em,#deck [style*="font-weight:900"],#deck [style*="font-weight:950"]{font-family:"SCK-Bold","Malgun Gothic",sans-serif}
+#deck h3,#deck .kicker,#deck .label,#deck .tag,#deck .flow .node,#deck .quote-small,#deck .cover-sub,#deck .keyword-head .en,#deck .drawer-key b,#deck .deck-meta,#deck b,#deck strong{font-family:"SCK-Medium","Malgun Gothic",sans-serif}
+#deck p,#deck .small,#deck .lead,#deck .footnote,#deck .drawer-intro,#deck .drawer-bottom,#deck .compare p,#deck .insightline span,#deck .listitem,#deck .callout p,#deck .source-list a{font-family:"SCK-Light","Malgun Gothic",sans-serif}
+#rail,#rail *{font-family:"SCK-Medium","Malgun Gothic",sans-serif;font-weight:400!important;font-synthesis:none}
+#toast{font-family:"SCK-Light","Malgun Gothic",sans-serif;font-weight:400!important}
+
+@media(max-width:760px){
+  #deck{width:100vw;height:100vh;max-width:none;max-height:none;aspect-ratio:auto}
+  .slide{padding:11% 8% 12% 7%;overflow-y:auto;justify-content:flex-start}
+  .deck-head{top:18px;left:7%;right:20%}
+  .grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .grid.three{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split{grid-template-columns:1fr}
+  .map-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #rail{right:8px;top:auto;bottom:12px;transform:none;flex-direction:row}
+  .railbtn{width:43px;height:43px;border-radius:12px}
+  .railbtn small{font-size:7px}
+  #drawer{width:88%;padding:22px}
+  .slide:after{left:7%;right:7%;bottom:7%}
+  .slide-number{right:7%;bottom:3%}
+  #help{left:7%;bottom:3%}
+  .cover-art{opacity:.22;right:-10%;width:68%}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<div id="stage">
+  <main id="deck" aria-label="Trend Korea 2027 presentation">
+    <div class="topline"></div><div class="progress" id="progress"></div>
+    <div class="deck-head"><div class="brand">INSIGHT <b>/</b> BRIEF</div><div class="deck-meta"><span id="sectionLabel">2027 CONSUMER & SOCIETY</span><span id="fontStatus" class="font-status">FONT CHECK</span></div></div>
+
+    <section class="slide cover active" data-section="OPENING">
+      <div class="cover-title">
+        <div class="kicker">TREND KOREA 2027 · STRATEGIC INSIGHT</div>
+        <div class="alpha">ALPHA<br>SHEEP</div>
+        <div class="rule"></div>
+        <h1 style="font-size:clamp(22px,2.8vw,46px);max-width:650px">무리를 따르는 시대에서<br><span class="red">먼저 판단하고 실행하는 시대</span>로</h1>
+        <p class="cover-sub">2027 소비·사회·조직 변화 읽기</p>
+        <div class="pillrow"><span class="tag redtag">10대 키워드 분석</span><span class="tag">4가지 변화 축</span><span class="tag">조직 적용 인사이트</span></div>
+      </div>
+      <div class="cover-art" aria-hidden="true">
+        <svg viewBox="0 0 600 600" fill="none">
+          <circle cx="310" cy="300" r="240" stroke="#e9dadd" stroke-width="1.5"/>
+          <circle cx="310" cy="300" r="190" stroke="#e9dadd" stroke-width="1.5" stroke-dasharray="5 9"/>
+          <path d="M85 365 C170 170 260 440 350 250 S500 180 545 300" stroke="#e4002b" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 12"/>
+          <g fill="#dfe1e4" stroke="#aeb4bc" stroke-width="2">
+            <ellipse cx="150" cy="255" rx="43" ry="32"/><circle cx="185" cy="237" r="20"/>
+            <ellipse cx="230" cy="365" rx="43" ry="32"/><circle cx="265" cy="347" r="20"/>
+            <ellipse cx="335" cy="190" rx="43" ry="32"/><circle cx="370" cy="172" r="20"/>
+            <ellipse cx="425" cy="365" rx="43" ry="32"/><circle cx="460" cy="347" r="20"/>
+          </g>
+          <g fill="#fff" stroke="#e4002b" stroke-width="3">
+            <ellipse cx="340" cy="330" rx="58" ry="43"/><circle cx="390" cy="305" r="28"/>
+            <path d="M375 283 L362 260 L393 274 Z"/><path d="M401 284 L421 264 L416 296 Z"/>
+          </g>
+          <path d="M400 309 L425 312" stroke="#e4002b" stroke-width="3" stroke-linecap="round"/>
+          <path d="M340 374 L330 410 M370 374 L380 410" stroke="#e4002b" stroke-width="4" stroke-linecap="round"/>
+          <text x="300" y="520" text-anchor="middle" fill="#8b929a" font-size="15" letter-spacing="5">THINK · CHOOSE · MOVE</text>
+        </svg>
+      </div>
+      <div class="cover-bottom">2027 OUTLOOK / PUBLIC-SOURCE SYNTHESIS / 24 NOV 2026</div>
+    </section>
+
+    <section class="slide" data-section="EXECUTIVE SUMMARY">
+      <div class="kicker">01 / EXECUTIVE SUMMARY</div>
+      <h2>2027년을 관통하는 질문은<br><span class="red">“AI 이후, 인간에게 남는 경쟁력은 무엇인가?”</span></h2>
+      <p class="lead">AI가 특별한 기술에서 일상의 기본 도구로 이동하면서, 경쟁의 초점은 기술 보유에서 선택·판단·실행·관계의 설계로 옮겨갑니다.</p>
+      <div class="grid four" style="margin-top:2.2em">
+        <div class="card"><div class="label">LIFE</div><div class="metric">01</div><h3>의미와 효율</h3><p class="small">자극 과잉 속에서 시간과 만족의 가치를 다시 계산</p></div>
+        <div class="card"><div class="label">MARKET</div><div class="metric">02</div><h3>경험과 관계</h3><p class="small">제품의 사용방식과 고객 유지 경험이 차별화</p></div>
+        <div class="card"><div class="label">WORK</div><div class="metric">03</div><h3>실행과 재설계</h3><p class="small">AI로 실행 비용을 낮추고 업무 흐름 자체를 재구성</p></div>
+        <div class="card"><div class="label">HUMAN</div><div class="metric">04</div><h3>판단과 안목</h3><p class="small">사람의 흔적, 취향, 책임과 분별력이 희소 자산</p></div>
+      </div>
+      <div class="callout" style="margin-top:1.4em"><div class="mark">↗</div><p><b>핵심 해석</b><br>누구나 비슷한 도구를 쓰는 시대에는 도구 자체가 차이를 만들기 어렵습니다. 무엇을 선택하고, 무엇을 거절하며, 무엇을 먼저 실험할지 결정하는 능력이 경쟁력을 가릅니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="THE BIG PICTURE">
+      <div class="kicker">02 / THE BIG PICTURE</div>
+      <h2>10개 키워드는<br><span class="red">4개의 거대한 변화</span>로 연결된다</h2>
+      <p class="small">책의 공식 목차를 재분류한 것이 아니라, 이해와 적용을 돕기 위한 분석 프레임입니다.</p>
+      <div class="grid two" style="margin-top:1.2em">
+        <div class="card redwash"><div class="label">01 · PEOPLE & LIFE</div><h3>개인의 시간과 경험을 다시 평가</h3><p class="small">권태사회 · 라이프 ROI · 저장인류 · 하프시그널</p><div class="barlist" style="margin-top:12px"><div class="barline"><span>관심의 희소성</span><div class="track"><div class="fill" style="width:88%"></div></div></div><div class="barline"><span>삶의 효율성</span><div class="track"><div class="fill" style="width:76%"></div></div></div></div></div>
+        <div class="card"><div class="label">02 · PRODUCT & RELATIONSHIP</div><h3>사용 경험과 관계의 질이 경쟁력</h3><p class="small">폼팩터 시프트 · 리:텐션 전략</p><div class="flow" style="margin-top:18px"><span class="node">기능 개선</span><span class="arrow">→</span><span class="node">사용 방식 혁신</span><span class="arrow">→</span><span class="node">관계 유지</span></div></div>
+        <div class="card"><div class="label">03 · WORK & EXECUTION</div><h3>AI를 도구가 아닌 업무 구조로</h3><p class="small">바이브 워킹 · 해봄경제</p><div class="flow" style="margin-top:18px"><span class="node">작게 제작</span><span class="arrow">→</span><span class="node">빠른 검증</span><span class="arrow">→</span><span class="node">반복 개선</span></div></div>
+        <div class="card dark"><div class="label" style="color:#aeb9c3">04 · HUMAN ADVANTAGE</div><h3>인간의 판단이 마지막 차별점</h3><p class="small" style="color:#d1d8df">휴먼엣지 · 안목자본</p><div class="quote-small" style="margin-top:14px;color:#fff">AI가 답을 많이 만들수록<br><span style="color:#ff7b91">좋은 답을 고르는 능력</span>이 중요해진다.</div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="01 · LIFE & CONSUMPTION">
+      <div class="kicker">03 / KEYWORD 01</div>
+      <div class="keyword-head"><div><h2>권태사회</h2><div class="en">AGE OF ENNUI SOCIETY</div></div><div class="keyword-number">01</div></div>
+      <div class="rule"></div>
+      <div class="split">
+        <div>
+          <div class="bigquote">볼거리는 넘치는데,<br>정작 <span class="red">재미와 의미는 부족</span>하다.</div>
+          <p class="lead" style="margin-top:1em">예전에는 자극이 부족해서 심심했다면, 지금은 자극과 선택지가 너무 많아 쉽게 싫증이 납니다.</p>
+          <div class="insightline"><b>왜 생기나</b><span>쇼츠·SNS·OTT·게임이 빈 시간을 거의 없애고, 다음 자극을 끊임없이 찾게 만듭니다.</span></div>
+          <div class="insightline"><b>소비 변화</b><span>더 많은 콘텐츠보다 몰입할 이유, 기억에 남는 경험, 의도적인 휴식이 중요해집니다.</span></div>
+        </div>
+        <div class="visualbox">
+          <div class="label">FROM SCARCITY TO OVERLOAD</div>
+          <div class="compare" style="margin-top:15px">
+            <div><strong>과거의 권태</strong><p>할 일이 적다<br>자극이 부족하다<br>무엇을 할지 모른다</p></div>
+            <div><strong>2027형 권태</strong><p>선택지가 너무 많다<br>자극이 끊이지 않는다<br>무엇에도 오래 몰입하지 못한다</p></div>
+          </div>
+          <div style="margin-top:20px;padding:14px;border-radius:12px;background:#172331;color:#fff">
+            <div class="label" style="color:#aeb9c3">BUSINESS IMPLICATION</div>
+            <p class="quote-small" style="margin:8px 0 0">콘텐츠 양을 늘리기보다 고객이 시간을 들일 만한 <span style="color:#ff8095">의미 있는 경험</span>을 설계하라.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footnote">해석 근거: 2027 출간 간담회 보도 및 트렌드 분석 자료.</div>
+    </section>
+
+    <section class="slide" data-section="01 · LIFE & CONSUMPTION">
+      <div class="kicker">04 / KEYWORD 02</div>
+      <div class="keyword-head"><div><h2>라이프 ROI</h2><div class="en">LIFE RETURN ON INVESTMENT</div></div><div class="keyword-number">02</div></div>
+      <div class="rule"></div>
+      <div class="split">
+        <div>
+          <div class="bigquote">돈뿐 아니라 시간과 감정까지,<br><span class="red">투자 대비 만족</span>을 계산한다.</div>
+          <p class="lead" style="margin-top:1em">소비자는 가격이 싼지보다 내가 쓴 돈·시간·노력에 비해 얼마나 만족했는지를 따집니다.</p>
+          <div class="list" style="margin-top:1.1em">
+            <div class="listitem"><span class="dot"></span><span>취미·교육·여행에서 얻는 경험의 질을 평가</span></div>
+            <div class="listitem"><span class="dot"></span><span>팬덤·구독·서비스도 시간 대비 효용을 따짐</span></div>
+            <div class="listitem"><span class="dot"></span><span>관계에서도 일방적 소모가 지속되면 거리 두기</span></div>
+          </div>
+        </div>
+        <div class="visualbox">
+          <div class="label">LIFE ROI · CONCEPT MODEL</div>
+          <div style="display:grid;grid-template-columns:1fr 60px 1fr;gap:8px;align-items:center;margin:22px 0">
+            <div class="card" style="text-align:center"><div class="label">INPUT</div><div class="metric">시간</div><p class="small">돈 · 노력 · 감정</p></div>
+            <div style="font-size:28px;color:var(--red);text-align:center">÷</div>
+            <div class="card redwash" style="text-align:center"><div class="label">OUTPUT</div><div class="metric">가치</div><p class="small">만족 · 성장 · 편의</p></div>
+          </div>
+          <div class="callout"><div class="mark">!</div><p><b>균형이 필요하다</b><br>모든 경험을 즉각적인 수익률로 평가하면 장기 학습, 실패, 관계처럼 시간이 지나야 가치가 생기는 경험을 놓칠 수 있습니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="02 · MARKET">
+      <div class="kicker">05 / KEYWORD 03</div>
+      <div class="keyword-head"><div><h2>폼팩터 시프트</h2><div class="en">PLASTICITY IN THE FORM FACTOR SHIFT</div></div><div class="keyword-number">03</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">성능을 조금 더 높이는 대신,<br><span class="red">사용하는 방식 자체를 바꾼다.</span></div>
+      <p class="lead" style="margin-top:1em">기능 경쟁이 평준화될수록 제품의 물성·구조·사용법·보관 방식을 바꿔 새로운 구매 이유를 만듭니다.</p>
+      <div class="grid three" style="margin-top:1.5em">
+        <div class="card"><div class="label">FORM</div><h3>고체 샴푸</h3><p class="small">액체에서 고체로. 휴대와 보관 방식 변화</p><div class="tag redtag">물성의 변화</div></div>
+        <div class="card"><div class="label">USE</div><h3>알약 치약</h3><p class="small">짜서 쓰는 방식에서 씹어 쓰는 방식으로</p><div class="tag redtag">사용 행동의 변화</div></div>
+        <div class="card"><div class="label">PLACE</div><h3>이동형 TV</h3><p class="small">고정된 시청에서 원하는 장소로 이동</p><div class="tag redtag">사용 장소의 변화</div></div>
+      </div>
+      <div class="callout" style="margin-top:1.2em"><div class="mark">↗</div><p><b>기획자의 질문</b><br>“기능을 하나 더 넣을 수 있을까?”보다 “사용자가 이 제품을 집고, 열고, 쓰고, 보관하는 행동을 어떻게 바꿀 수 있을까?”를 먼저 물어야 합니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="03 · WORK & EXECUTION">
+      <div class="kicker">06 / KEYWORD 04</div>
+      <div class="keyword-head"><div><h2>해봄경제</h2><div class="en">HAVE-A-GO ECONOMY</div></div><div class="keyword-number">04</div></div>
+      <div class="rule"></div>
+      <div class="split">
+        <div>
+          <div class="bigquote">완벽하게 준비한 뒤 시작하는 것이 아니라,<br><span class="red">일단 해보고 고친다.</span></div>
+          <p class="lead" style="margin-top:1em">AI와 디지털 도구가 제작·검증 비용을 낮추면서 아이디어를 실제 결과물로 옮기는 장벽이 낮아집니다.</p>
+          <div class="pillrow"><span class="tag">작은 실험</span><span class="tag">빠른 피드백</span><span class="tag">반복 개선</span><span class="tag">실행 경험</span></div>
+        </div>
+        <div class="visualbox">
+          <div class="label">OLD SEQUENCE → NEW SEQUENCE</div>
+          <div class="list" style="margin-top:14px">
+            <div class="card" style="padding:12px"><b>과거</b><div class="flow" style="margin-top:9px"><span class="node">기획</span><span class="arrow">→</span><span class="node">예산·인력</span><span class="arrow">→</span><span class="node">실행</span></div></div>
+            <div class="card redwash" style="padding:12px"><b>해봄경제</b><div class="flow" style="margin-top:9px"><span class="node">시제품</span><span class="arrow">→</span><span class="node">반응 확인</span><span class="arrow">→</span><span class="node">수정·확장</span></div></div>
+          </div>
+          <p class="small" style="margin-top:13px">AI는 전문가를 없애는 것보다, 전문가와 자원을 투입하기 전 아이디어를 시험하는 비용을 낮춥니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="01 · LIFE & CONSUMPTION">
+      <div class="kicker">07 / KEYWORD 05</div>
+      <div class="keyword-head"><div><h2>저장인류</h2><div class="en">ALL IS SAVED: HOMO ARCHIVARIUS</div></div><div class="keyword-number">05</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">선별해서 기록하던 시대에서,<br><span class="red">일단 저장하고 나중에 찾는 시대</span>로.</div>
+      <div class="grid two" style="margin-top:1.4em">
+        <div class="visualbox">
+          <div class="label">BEHAVIOR SHIFT</div>
+          <div class="compare" style="margin-top:12px">
+            <div><strong>과거</strong><p>필름 수 제한<br>촬영·보관 비용<br>찍기 전에 선택</p></div>
+            <div><strong>현재</strong><p>저장 비용 하락<br>클라우드·AI 검색<br>먼저 저장, 나중에 선택</p></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="label">SAVED OBJECTS</div>
+          <div class="grid two" style="margin-top:12px;gap:8px">
+            <div class="card" style="background:#f4f5f6;padding:12px"><div class="metric">▣</div><b>사진·영상</b><p class="small">일상의 순간</p></div>
+            <div class="card" style="background:#f4f5f6;padding:12px"><div class="metric">⌖</div><b>장소·경로</b><p class="small">방문·운동 기록</p></div>
+            <div class="card" style="background:#f4f5f6;padding:12px"><div class="metric">≋</div><b>대화·회의</b><p class="small">업무·학습 기록</p></div>
+            <div class="card" style="background:#f4f5f6;padding:12px"><div class="metric">◷</div><b>건강·습관</b><p class="small">생활 데이터</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:1.2em"><div class="mark">!</div><p><b>기록이 많아질수록 관리 원칙도 중요</b><br>저장 자체가 목적이 되면 정보 피로와 개인정보 위험이 커집니다. 무엇을 저장하고, 누가 접근하며, 언제 삭제할지까지 설계해야 합니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="03 · WORK & EXECUTION">
+      <div class="kicker">08 / KEYWORD 06</div>
+      <div class="keyword-head"><div><h2>바이브 워킹</h2><div class="en">SEAMLESS AI INTEGRATION: VIBE WORKING</div></div><div class="keyword-number">06</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">AI를 업무 중간에 끼워 넣는 것이 아니라,<br><span class="red">AI가 작동하도록 업무를 다시 설계한다.</span></div>
+      <p class="lead" style="margin-top:1em">개인의 AI 사용량이 늘어도 조직 전체의 생산성이 자동으로 오르지는 않습니다. 반복·분석·초안·검토의 흐름을 다시 설계해야 합니다.</p>
+      <div class="grid three" style="margin-top:1.4em">
+        <div class="card"><div class="number">01</div><h3>업무 분해</h3><p class="small">업무를 단계와 입력·출력 단위로 나눠 AI가 처리할 수 있는 형태로 정의</p></div>
+        <div class="card"><div class="number">02</div><h3>AI 연결</h3><p class="small">자료 정리, 초안, 분류, 반복 작업에 도구와 에이전트를 연결</p></div>
+        <div class="card redwash"><div class="number">03</div><h3>사람의 책임</h3><p class="small">방향 설정, 예외 판단, 최종 승인과 결과 책임은 사람이 담당</p></div>
+      </div>
+      <div class="callout" style="margin-top:1.2em"><div class="mark">↗</div><p><b>주의할 점</b><br>기존 결재와 보고 단계를 그대로 둔 채 AI만 추가하면 검토와 재작업이 늘어날 수 있습니다. AI 도입과 함께 프로세스도 바꿔야 합니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="02 · MARKET">
+      <div class="kicker">09 / KEYWORD 07</div>
+      <div class="keyword-head"><div><h2>리:텐션 전략</h2><div class="en">HOLD ON TO YOUR CUSTOMERS! RETENTION STRATEGY</div></div><div class="keyword-number">07</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">새 고객을 계속 데려오는 것보다,<br><span class="red">기존 고객이 떠나지 않을 이유</span>를 만든다.</div>
+      <div class="split" style="margin-top:1.3em">
+        <div class="visualbox">
+          <div class="label">GROWTH MODEL SHIFT</div>
+          <div class="compare" style="margin-top:12px">
+            <div><strong>획득 중심</strong><p>광고·가입 할인<br>신규 고객 수<br>높은 유치 비용</p></div>
+            <div><strong>유지 중심</strong><p>편의성·환대<br>반복 이용·관계<br>이탈 이유 제거</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="card"><div class="label">KEY CONCEPT</div><h3>역체감 설계</h3><p class="small">경쟁 서비스로 옮겼을 때 기존에 누리던 편리함이나 세심한 서비스를 잃었다고 느끼게 만드는 것.</p></div>
+          <div class="card" style="margin-top:10px"><div class="label">KEY CONCEPT</div><h3>정서적 환대</h3><p class="small">거래가 끝난 뒤에도 고객을 기억하고 예상하지 못한 배려를 제공해 관계를 이어가는 것.</p></div>
+        </div>
+      </div>
+      <p class="footnote">사례 보도: 현대백화점의 수박 손질 서비스, 리츠칼튼의 분실 애착 인형 반환 사례 등.</p>
+    </section>
+
+    <section class="slide" data-section="04 · HUMAN ADVANTAGE">
+      <div class="kicker">10 / KEYWORD 08</div>
+      <div class="keyword-head"><div><h2>휴먼엣지</h2><div class="en">EVERY AI NEEDS THE HUMAN EDGE</div></div><div class="keyword-number">08</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">AI가 더 매끈하게 만들수록,<br><span class="red">사람의 손길과 책임</span>이 차별점이 된다.</div>
+      <div class="grid three" style="margin-top:1.4em">
+        <div class="card"><div class="metric">01</div><h3>과정의 흔적</h3><p class="small">누가 어떤 시간과 기술을 들여 만들었는지 드러나는 제작 과정</p></div>
+        <div class="card"><div class="metric">02</div><h3>인간의 판단</h3><p class="small">무엇을 선택하고 제외했는지, 왜 그렇게 결정했는지 설명할 수 있는 판단</p></div>
+        <div class="card"><div class="metric">03</div><h3>결과의 책임</h3><p class="small">AI를 활용해도 결과의 정확성·윤리성·품질에 책임지는 사람</p></div>
+      </div>
+      <div class="callout" style="margin-top:1.2em"><div class="mark">✦</div><p><b>핵심은 ‘AI를 쓰지 않음’이 아닙니다.</b><br>AI가 참여한 결과물이라도 인간이 어떤 기준으로 판단했고 최종 결과에 누가 책임지는지를 분명히 하는 것이 중요합니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="01 · LIFE & CONSUMPTION">
+      <div class="kicker">11 / KEYWORD 09</div>
+      <div class="keyword-head"><div><h2>하프시그널</h2><div class="en">EMBRACING MENOPAUSE: THE HALF SIGNAL</div></div><div class="keyword-number">09</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">인생의 후반전은 쇠퇴가 아니라,<br><span class="red">새로운 생활 단계의 시작</span>이다.</div>
+      <p class="lead" style="margin-top:1em">갱년기를 삶의 끝이 아닌 중간 전환점으로 바라보며, 중년층의 건강·일·가족·소비 변화를 새로운 시장과 조직 과제로 해석합니다.</p>
+      <div class="grid four" style="margin-top:1.5em">
+        <div class="card"><div class="label">HEALTH</div><h3>건강관리</h3><p class="small">생애주기 맞춤형 관리</p></div>
+        <div class="card"><div class="label">LIFESTYLE</div><h3>셀프케어</h3><p class="small">뷰티·여행·자기계발</p></div>
+        <div class="card"><div class="label">FAMILY</div><h3>돌봄의 중첩</h3><p class="small">자녀·부모·자기 돌봄</p></div>
+        <div class="card"><div class="label">WORK</div><h3>조직의 생애주기</h3><p class="small">중년 인력의 건강과 지속가능성</p></div>
+      </div>
+      <div class="callout" style="margin-top:1.2em"><div class="mark">!</div><p><b>해석 시 유의</b><br>중년층을 하나의 동질적인 집단으로 단순화하면 안 됩니다. 개인별 건강 상태와 가족 상황, 직업·소득·생활 단계의 차이를 고려해야 합니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="04 · HUMAN ADVANTAGE">
+      <div class="kicker">12 / KEYWORD 10</div>
+      <div class="keyword-head"><div><h2>안목자본</h2><div class="en">POWER OF TASTE CAPITAL</div></div><div class="keyword-number">10</div></div>
+      <div class="rule"></div>
+      <div class="bigquote">무엇이든 만들 수 있는 시대,<br><span class="red">무엇이 좋은지 알아보는 능력</span>이 자산이다.</div>
+      <p class="lead" style="margin-top:1em">AI가 수많은 대안을 만들어도 좋은 결과를 고르고, 맥락을 읽고, 무엇을 버릴지 결정하는 능력은 자동으로 생기지 않습니다.</p>
+      <div class="visualbox" style="margin-top:1.3em">
+        <div class="label">HOW TASTE CAPITAL GROWS</div>
+        <div class="flow" style="justify-content:space-between;margin-top:22px">
+          <div class="node" style="flex:1;text-align:center">직접 관찰</div><div class="arrow">→</div>
+          <div class="node" style="flex:1;text-align:center">기준 세우기</div><div class="arrow">→</div>
+          <div class="node" style="flex:1;text-align:center">비교·판단</div><div class="arrow">→</div>
+          <div class="node" style="flex:1;text-align:center;background:#fff0f2;border-color:#f2c4cc">선택·편집</div>
+        </div>
+        <p class="small" style="margin-top:17px">예: 작품을 사진으로 남기는 데 그치지 않고 먼저 관찰·기록한 뒤 전문가의 평가와 비교해 다시 보는 훈련.</p>
+      </div>
+      <div class="callout" style="margin-top:1.2em"><div class="mark">✦</div><p><b>안목은 취향과 다릅니다.</b><br>단순히 좋아하는 것을 넘어, 왜 좋은지 설명하고 맥락과 품질을 구별하며 일관된 선택 기준을 축적하는 능력입니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="SYNTHESIS">
+      <div class="kicker">13 / CONNECTION MAP</div>
+      <h2>10개 키워드의 연결고리:<br><span class="red">AI가 선택지를 늘리고, 인간의 판단이 가치를 만든다</span></h2>
+      <div class="visualbox" style="margin-top:1.1em;padding:22px">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:stretch">
+          <div class="card redwash"><div class="label">ENVIRONMENT</div><h3>AI 범용화</h3><p class="small">정보·콘텐츠·제작의 비용 하락</p></div>
+          <div class="card"><div class="label">HUMAN RESPONSE</div><h3>과잉과 재평가</h3><p class="small">권태사회 · 라이프 ROI · 저장인류</p></div>
+          <div class="card"><div class="label">NEW ACTION</div><h3>실행과 관계</h3><p class="small">해봄경제 · 바이브 워킹 · 리:텐션</p></div>
+        </div>
+        <div style="text-align:center;font-size:26px;color:var(--red);margin:9px 0">↓</div>
+        <div class="card dark" style="text-align:center;padding:22px">
+          <div class="label" style="color:#bac5cf">THE HUMAN DIFFERENCE</div>
+          <div style="font-size:clamp(22px,2.6vw,42px);font-weight:900;letter-spacing:-.04em;margin:7px 0">휴먼엣지 <span style="color:#ff8498">+</span> 안목자본</div>
+          <p style="margin:0;color:#dce2e7;font-size:clamp(11px,1vw,16px)">판단 · 취향 · 책임 · 경험</p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:13px">폼팩터 시프트는 제품 경험의 혁신으로, 하프시그널은 인구·생애주기 변화로 이 흐름과 맞물립니다.</p>
+    </section>
+
+    <section class="slide" data-section="APPLICATION">
+      <div class="kicker">14 / ORGANIZATIONAL IMPLICATIONS</div>
+      <h2>비영리·아동보호 조직에 적용하면<br><span class="red">무엇을 다시 설계해야 할까?</span></h2>
+      <p class="small">아래 내용은 책의 직접 주장이나 공식 제언이 아니라, 10대 키워드를 공익·아동보호 사업 운영에 적용한 분석적 시사점입니다.</p>
+      <div class="grid two" style="margin-top:1.1em">
+        <div class="card"><div class="label">SERVICE DESIGN</div><h3>권태사회 × 라이프 ROI</h3><p class="small">대상자와 실무자에게 정보·절차를 더하는 것보다, 실제로 도움이 되는 접점과 행정 부담을 줄이는 경험을 설계합니다.</p></div>
+        <div class="card"><div class="label">DIGITAL PROCESS</div><h3>폼팩터 × 바이브 워킹</h3><p class="small">종이 양식을 화면에 옮기는 수준을 넘어, 기록·검토·승인·인계 흐름 자체를 재설계합니다.</p></div>
+        <div class="card"><div class="label">SAFE EXPERIMENT</div><h3>해봄경제 × 저장인류</h3><p class="small">작은 범위에서 시범 적용하되, 민감정보 최소 수집·접근 통제·보존기간·삭제 기준을 함께 설계합니다.</p></div>
+        <div class="card"><div class="label">PEOPLE & TRUST</div><h3>리:텐션 × 휴먼엣지</h3><p class="small">직원·협력기관·후원자와의 관계를 유지하고, 현장의 공감·전문 판단·책임을 기술로 대체하지 않습니다.</p></div>
+      </div>
+      <div class="callout" style="margin-top:1em"><div class="mark">✦</div><p><b>조직 적용의 원칙</b><br>AI는 반복 업무와 초안 작성을 돕고, 아동의 안전·권리·사례 판단과 최종 책임은 담당 전문가에게 남겨야 합니다.</p></div>
+    </section>
+
+    <section class="slide" data-section="APPLICATION">
+      <div class="kicker">15 / FROM INSIGHT TO ACTION</div>
+      <h2>2027년을 준비하는<br><span class="red">90일 실행 프레임</span></h2>
+      <p class="lead">대규모 도입보다 작고 안전한 실험을 통해 문제와 효과를 확인한 뒤 확장합니다.</p>
+      <div class="grid three" style="margin-top:1.5em">
+        <div class="card"><div class="number">01</div><div class="label">DAY 1–30</div><h3>문제 재정의</h3><div class="list"><div class="listitem"><span class="dot"></span><span>반복·대기·중복 업무를 관찰</span></div><div class="listitem"><span class="dot"></span><span>대상자와 실무자의 불편을 구분</span></div><div class="listitem"><span class="dot"></span><span>데이터·권한·위험 기준 확인</span></div></div></div>
+        <div class="card redwash"><div class="number">02</div><div class="label">DAY 31–60</div><h3>작은 실험</h3><div class="list"><div class="listitem"><span class="dot"></span><span>한 업무·한 팀에서 시범 적용</span></div><div class="listitem"><span class="dot"></span><span>시간·오류·사용자 경험 측정</span></div><div class="listitem"><span class="dot"></span><span>사람의 검토·승인 지점 명확화</span></div></div></div>
+        <div class="card"><div class="number">03</div><div class="label">DAY 61–90</div><h3>검증과 확장</h3><div class="list"><div class="listitem"><span class="dot"></span><span>효과와 부작용 함께 평가</span></div><div class="listitem"><span class="dot"></span><span>표준 프로세스·교육·가이드 정리</span></div><div class="listitem"><span class="dot"></span><span>확대·수정·중단 여부 결정</span></div></div></div>
+      </div>
+      <p class="footnote">측정 지표 예시: 처리시간, 재작업률, 누락률, 사용자 만족, 개인정보 접근·보존 준수.</p>
+    </section>
+
+    <section class="slide" data-section="DECISION GUIDE">
+      <div class="kicker">16 / QUESTIONS FOR LEADERS</div>
+      <h2>트렌드를 실행 전략으로 바꾸는<br><span class="red">다섯 가지 질문</span></h2>
+      <div class="list" style="margin-top:1.2em;max-width:1000px">
+        <div class="card" style="display:flex;gap:16px;align-items:center"><div class="number">01</div><div><h3>우리는 더 많은 일을 하고 있는가, 더 의미 있는 결과를 만들고 있는가?</h3><p class="small">권태사회 · 라이프 ROI</p></div></div>
+        <div class="card" style="display:flex;gap:16px;align-items:center"><div class="number">02</div><div><h3>기존 서비스의 기능이 아니라 사용 경험을 바꿀 수 있는가?</h3><p class="small">폼팩터 시프트</p></div></div>
+        <div class="card" style="display:flex;gap:16px;align-items:center"><div class="number">03</div><div><h3>완벽한 계획을 기다리지 않고 작게 검증할 수 있는가?</h3><p class="small">해봄경제</p></div></div>
+        <div class="card" style="display:flex;gap:16px;align-items:center"><div class="number">04</div><div><h3>AI를 도입했는가, 아니면 업무 프로세스를 바꿨는가?</h3><p class="small">바이브 워킹</p></div></div>
+        <div class="card" style="display:flex;gap:16px;align-items:center"><div class="number">05</div><div><h3>AI가 대신할 수 없는 판단과 책임을 어디에 남길 것인가?</h3><p class="small">휴먼엣지 · 안목자본</p></div></div>
+      </div>
+    </section>
+
+    <section class="slide" data-section="CLOSING">
+      <div class="kicker">17 / FINAL TAKEAWAY</div>
+      <div class="bigquote" style="font-size:clamp(25px,3.5vw,58px);max-width:1050px">2027년의 알파는<br>가장 앞선 기술을 가진 사람이 아니라,<br><span class="red">자신의 기준으로 판단하고<br>먼저 실행하는 사람</span>이다.</div>
+      <div class="rule"></div>
+      <div class="grid three" style="margin-top:1em">
+        <div class="card"><div class="label">THINK</div><h3>무엇이 중요한가?</h3><p class="small">정보를 모으는 데서 멈추지 않고 맥락과 가치를 판단</p></div>
+        <div class="card"><div class="label">CHOOSE</div><h3>무엇을 선택할까?</h3><p class="small">모든 유행을 따라가지 않고 나만의 기준으로 선별</p></div>
+        <div class="card redwash"><div class="label">MOVE</div><h3>무엇을 시작할까?</h3><p class="small">작게 시도하고, 결과를 보고, 더 나은 방향으로 수정</p></div>
+      </div>
+      <div style="margin-top:2em;font-size:clamp(25px,3.2vw,52px);font-weight:950;letter-spacing:-.05em;color:var(--red)">ALPHA SHEEP</div>
+      <p class="small">흐름을 읽되, 흐름에 끌려가지 않는 사람과 조직.</p>
+    </section>
+
+    <section class="slide" data-section="SOURCES & METHOD">
+      <div class="kicker">18 / SOURCES & METHOD</div>
+      <h2>자료 범위와 해석 기준</h2>
+      <p class="lead">본 자료는 공개된 도서 정보, 출간 발표 보도, 키워드 해설 자료를 종합해 핵심 내용을 재구성한 브리핑입니다.</p>
+      <div class="grid two" style="margin-top:1.1em">
+        <div class="card">
+          <div class="label">SCOPE</div><h3>분석 범위</h3>
+          <div class="list">
+            <div class="listitem"><span class="dot"></span><span>『트렌드 코리아 2027』 공개 도서 소개 및 목차</span></div>
+            <div class="listitem"><span class="dot"></span><span>2026년 9~11월 출간 간담회 및 연구위원 발표 보도</span></div>
+            <div class="listitem"><span class="dot"></span><span>공개된 키워드 해설·사례 분석</span></div>
+          </div>
+          <p class="footnote">도서 전체 원문을 직접 인용하거나 전재한 자료가 아닙니다. 책의 세부 논증·통계 전체를 대체하지 않습니다.</p>
+        </div>
+        <div class="card">
+          <div class="label">READING GUIDE</div><h3>해석 원칙</h3>
+          <div class="list">
+            <div class="listitem"><span class="dot"></span><span>책에서 제시한 키워드와 이 자료의 분석적 재분류를 구분</span></div>
+            <div class="listitem"><span class="dot"></span><span>사례는 공개 보도에 소개된 내용을 중심으로 사용</span></div>
+            <div class="listitem"><span class="dot"></span><span>미래 전망은 확정된 사실이 아닌 변화 가능성으로 해석</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="source-list" style="margin-top:1.1em">
+        <a href="https://www.yes24.com/Product/Goods/195842609" target="_blank" rel="noopener">01 · 도서 정보 및 2027년 10대 키워드 — YES24</a>
+        <a href="https://www.mk.co.kr/news/all/12164874" target="_blank" rel="noopener">02 · “권태가 2027년 출발점” — 매경이코노미, 2026.09.30</a>
+        <a href="https://www.marketcast.co.kr/m/entry/AI%EA%B0%80-%EC%9D%BC%EC%83%81%EC%9D%B4-%EB%90%9C-2027%EB%85%84-%EC%86%8C%EB%B9%84%EC%9E%90%EB%8A%94-ROI%EB%A5%BC-%EB%94%B0%EC%A7%80%EA%B3%A0-%EA%B8%B0%EC%97%85%EC%9D%80-%EC%A0%9C%ED%92%88-%ED%98%95%ED%83%9C%EC%99%80-%EB%8B%A8%EA%B3%A8-%EA%B4%80%EB%A6%AC%EB%A1%9C-%EC%8A%B9%EB%B6%80%ED%95%9C%EB%8B%A4-%ED%8A%B8%EB%A0%8C%EB%93%9C-%EC%BD%94%EB%A6%AC%EC%95%84-2027" target="_blank" rel="noopener">03 · 10대 키워드 분석 리포트 — Marketcast, 2026.09.30</a>
+        <a href="https://www.hankyung.com/article/202610227457H" target="_blank" rel="noopener">04 · 경총 포럼의 2027 트렌드 발표 — 한국경제, 2026.10.22</a>
+        <a href="https://view.asiae.co.kr/article/2026093015553645378" target="_blank" rel="noopener">05 · AI 이후 인간 경쟁력과 안목 — 아시아경제, 2026.09.30</a>
+      </div>
+      <p class="footnote">TREND KOREA 2027 · ALPHA SHEEP / INSIGHT BRIEF · 2026.11.24</p>
+    </section>
+
+    <div id="help">SPACE 다음 페이지　← 이전 페이지　HOME 처음으로　ESC 메뉴 닫기</div>
+    <div class="slide-number" id="slideNum">01 / 18</div>
+    <div id="scrim"></div>
+    <aside id="drawer" aria-label="한눈에 보기">
+      <div class="drawer-top"><h3>한눈에 보기</h3><button class="close" id="closeDrawer">닫기 ✕</button></div>
+      <p class="drawer-intro">10개 키워드와 핵심 변화 흐름을 한 화면에서 확인하세요. 항목을 누르면 해당 페이지로 이동합니다.</p>
+      <div class="drawer-visual" aria-label="Four trend clusters">
+        <div class="drawer-viz"><b>01 · LIFE</b><span>01 / 02 / 05 / 09</span></div>
+        <div class="drawer-viz"><b>02 · MARKET</b><span>03 / 07</span></div>
+        <div class="drawer-viz"><b>03 · WORK</b><span>04 / 06</span></div>
+        <div class="drawer-viz"><b>04 · HUMAN</b><span>08 / 10</span></div>
+      </div>
+      <div class="drawer-section">
+        <h4>10 KEYWORDS</h4>
+        <div class="drawer-key" data-goto="3"><span class="n">01</span><b>권태사회</b><span>자극 과잉</span></div>
+        <div class="drawer-key" data-goto="4"><span class="n">02</span><b>라이프 ROI</b><span>삶의 수익률</span></div>
+        <div class="drawer-key" data-goto="5"><span class="n">03</span><b>폼팩터 시프트</b><span>사용 방식 혁신</span></div>
+        <div class="drawer-key" data-goto="6"><span class="n">04</span><b>해봄경제</b><span>작은 실행</span></div>
+        <div class="drawer-key" data-goto="7"><span class="n">05</span><b>저장인류</b><span>일단 저장</span></div>
+        <div class="drawer-key" data-goto="8"><span class="n">06</span><b>바이브 워킹</b><span>업무 재설계</span></div>
+        <div class="drawer-key" data-goto="9"><span class="n">07</span><b>리:텐션 전략</b><span>고객 유지</span></div>
+        <div class="drawer-key" data-goto="10"><span class="n">08</span><b>휴먼엣지</b><span>사람의 흔적</span></div>
+        <div class="drawer-key" data-goto="11"><span class="n">09</span><b>하프시그널</b><span>중년의 전환</span></div>
+        <div class="drawer-key" data-goto="12"><span class="n">10</span><b>안목자본</b><span>판단의 자산</span></div>
+      </div>
+      <div class="drawer-section">
+        <h4>BRIEFING SECTIONS</h4>
+        <div class="drawer-key" data-goto="1"><span class="n">A</span><b>핵심 요약</b><span>2027 한 문장</span></div>
+        <div class="drawer-key" data-goto="2"><span class="n">B</span><b>4가지 변화</b><span>전체 구조</span></div>
+        <div class="drawer-key" data-goto="13"><span class="n">C</span><b>키워드 연결 지도</b><span>종합 해석</span></div>
+        <div class="drawer-key" data-goto="14"><span class="n">D</span><b>조직 적용</b><span>비영리·아동보호</span></div>
+        <div class="drawer-key" data-goto="15"><span class="n">E</span><b>90일 실행 프레임</b><span>실행 로드맵</span></div>
+        <div class="drawer-key" data-goto="16"><span class="n">F</span><b>리더의 질문</b><span>의사결정</span></div>
+        <div class="drawer-key" data-goto="17"><span class="n">G</span><b>핵심 결론</b><span>ALPHA SHEEP</span></div>
+        <div class="drawer-key" data-goto="18"><span class="n">H</span><b>자료 범위·출처</b><span>참고자료</span></div>
+      </div>
+      <div class="drawer-bottom">키보드: SPACE / → 다음 · ← 이전 · HOME 처음 · END 마지막 · ESC 닫기</div>
+    </aside>
+  </main>
+
+  <nav id="rail" aria-label="Presentation controls">
+    <button class="railbtn" id="overviewBtn" title="한눈에 보기"><span class="ico">▦</span><small>한눈에</small></button>
+    <button class="railbtn" id="homeBtn" title="처음으로"><span class="ico">⌂</span><small>처음</small></button>
+    <button class="railbtn" id="prevBtn" title="이전 페이지"><span class="ico">‹</span><small>이전</small></button>
+    <button class="railbtn" id="nextBtn" title="다음 페이지"><span class="ico">›</span><small>다음</small></button>
+  </nav>
+  <div id="toast"></div>
+</div>
+<script>
+(() => {
+  const slides = [...document.querySelectorAll('.slide')];
+  const progress = document.getElementById('progress');
+  const slideNum = document.getElementById('slideNum');
+  const sectionLabel = document.getElementById('sectionLabel');
+  const drawer = document.getElementById('drawer');
+  const scrim = document.getElementById('scrim');
+  const toast = document.getElementById('toast');
+  let current = 0, busy = false, toastTimer;
+
+  function announce(message){
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove('show'),1300);
+  }
+  function goTo(index){
+    if(busy || index < 0 || index >= slides.length || index === current) return;
+    busy = true;
+    const old = slides[current], next = slides[index];
+    const direction = index > current ? 'forward' : 'back';
+    old.classList.add(direction === 'forward' ? 'exit-left' : 'exit-right');
+    next.classList.add('active');
+    current = index;
+    progress.style.width = ((current+1)/slides.length*100)+'%';
+    slideNum.textContent = String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+    sectionLabel.textContent = next.dataset.section || '2027 OUTLOOK';
+    setTimeout(()=>{
+      old.classList.remove('active','exit-left','exit-right');
+      busy = false;
+    },650);
+  }
+  function next(){ if(current < slides.length-1) goTo(current+1); else announce('마지막 페이지입니다.'); }
+  function prev(){ if(current > 0) goTo(current-1); else announce('첫 페이지입니다.'); }
+  function openDrawer(){drawer.classList.add('open');scrim.classList.add('show');}
+  function closeDrawer(){drawer.classList.remove('open');scrim.classList.remove('show');}
+  document.getElementById('nextBtn').addEventListener('click',next);
+  document.getElementById('prevBtn').addEventListener('click',prev);
+  document.getElementById('homeBtn').addEventListener('click',()=>goTo(0));
+  document.getElementById('overviewBtn').addEventListener('click',openDrawer);
+  document.getElementById('closeDrawer').addEventListener('click',closeDrawer);
+  scrim.addEventListener('click',closeDrawer);
+  document.querySelectorAll('[data-goto]').forEach(el=>{
+    el.addEventListener('click',()=>{
+      const target = Number(el.dataset.goto);
+      closeDrawer(); goTo(target);
+    });
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key === 'Escape'){closeDrawer();return;}
+    if(drawer.classList.contains('open')) return;
+    if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)) return;
+    if(e.code === 'Space' || e.key === 'ArrowRight' || e.key === 'PageDown'){
+      e.preventDefault();next();
+    } else if(e.key === 'ArrowLeft' || e.key === 'PageUp'){
+      e.preventDefault();prev();
+    } else if(e.key === 'Home'){e.preventDefault();goTo(0);}
+    else if(e.key === 'End'){e.preventDefault();goTo(slides.length-1);}
+  });
+  let touchX = null;
+  document.getElementById('deck').addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX;},{passive:true});
+  document.getElementById('deck').addEventListener('touchend',e=>{
+    if(touchX===null)return;
+    const dx=e.changedTouches[0].screenX-touchX;
+    if(Math.abs(dx)>55){dx<0?next():prev();}
+    touchX=null;
+  },{passive:true});
+  progress.style.width = (100/slides.length)+'%';
+  slideNum.textContent = '01 / '+String(slides.length).padStart(2,'0');
+  sectionLabel.textContent = slides[0].dataset.section;
+
+  async function detectInstitutionalFonts(){
+    const status = document.getElementById('fontStatus');
+    const checks = [
+      '400 16px "SCK-Light"',
+      '400 16px "SCK-Medium"',
+      '400 16px "SCK-Bold"'
+    ];
+    try{
+      const results = await Promise.all(checks.map(async spec => {
+        const faces = await document.fonts.load(spec, 'ABC 123');
+        return faces.length > 0 && faces.every(face => face.status === 'loaded') && document.fonts.check(spec, 'ABC 123');
+      }));
+      if(results.every(Boolean)){
+        status.textContent = "\uAE30\uAD00 \uC11C\uCCB4 \uC801\uC6A9";
+        status.classList.add('ok');
+        status.title = "SavetheChildren Bold / Medium / Light";
+      }else{
+        status.textContent = "\uAE30\uAD00 \uC11C\uCCB4 \uD655\uC778 \uD544\uC694";
+        status.classList.add('warn');
+        status.title = "\uBE0C\uB77C\uC6B0\uC800\uC5D0\uC11C \uACF5\uC2DD \uC11C\uCCB4\uB97C \uCC3E\uC9C0 \uBABB\uD574 \uB300\uCCB4 \uC11C\uCCB4\uB85C \uD45C\uC2DC\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.";
+      }
+    }catch(error){
+      status.textContent = "\uAE30\uAD00 \uC11C\uCCB4 \uD655\uC778 \uD544\uC694";
+      status.classList.add('warn');
+    }
+  }
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(detectInstitutionalFonts);
+  }else{
+    detectInstitutionalFonts();
+  }
+})();
+</script>
+</body>
+</html>
