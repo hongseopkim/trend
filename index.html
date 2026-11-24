@@ -97,12 +97,70 @@ h3{font-size:clamp(15px,1.45vw,24px);line-height:1.25;margin-bottom:.55em}
 .cover-art .flow-head{transform-box:fill-box;transform-origin:center;animation:arrowhead-glow 5.4s ease-in-out infinite}
 .cover-art .choose-halo{transform-box:fill-box;transform-origin:center;animation:choose-pulse 3.4s ease-in-out infinite}
 .cover-art .choose-core{transform-box:fill-box;transform-origin:center;animation:choose-core-pulse 3.4s ease-in-out infinite}
-.cover-art .word{font-family:"SCK-Medium","Malgun Gothic",sans-serif;font-size:25px;letter-spacing:5px}
-.cover-art .word-muted{fill:#626b74}
-.cover-art .word-active{font-family:"SCK-Bold","Malgun Gothic",sans-serif;fill:#e4002b}
-.cover-art .word-underline{stroke:#aab1b7;stroke-width:1.5}
-.cover-art .word-underline.active{stroke:#e4002b;stroke-width:2.2}
+.cover-art .word{font-family:"SCK-Medium","Malgun Gothic",sans-serif;font-size:25px;letter-spacing:5px;fill:#626b74;opacity:.72;transform-box:fill-box;transform-origin:center}
+.cover-art .word-think{animation:stage-word-think 5.4s linear infinite}
+.cover-art .word-choose{animation:stage-word-choose 5.4s linear infinite}
+.cover-art .word-move{animation:stage-word-move 5.4s linear infinite}
+.cover-art .word-underline{fill:none;stroke:#aab1b7;stroke-width:1.5;opacity:.45;stroke-dasharray:78;stroke-dashoffset:78}
+.cover-art .underline-think{animation:stage-underline-think 5.4s linear infinite}
+.cover-art .underline-choose{animation:stage-underline-choose 5.4s linear infinite}
+.cover-art .underline-move{animation:stage-underline-move 5.4s linear infinite}
+.cover-art .stage-node-ring,.cover-art .stage-node-core{transform-box:fill-box;transform-origin:center}
+.cover-art .node-think-ring{animation:stage-ring-think 5.4s linear infinite}
+.cover-art .node-think-core{animation:stage-core-think 5.4s linear infinite}
+.cover-art .node-choose-halo{animation:stage-halo-choose 5.4s linear infinite}
+.cover-art .node-choose-ring{transform-box:fill-box;transform-origin:center;animation:stage-ring-choose 5.4s linear infinite}
+.cover-art .node-move-ring{animation:stage-ring-move 5.4s linear infinite}
+.cover-art .node-move-core{animation:stage-core-move 5.4s linear infinite}
 .cover-art .system-caption{font-family:"SCK-Light","Malgun Gothic",sans-serif;font-size:12px;letter-spacing:4px;fill:#a0a7ad}
+@keyframes stage-word-think{
+  0%,8%,22%,100%{fill:#626b74;opacity:.72;transform:translateY(0) scale(1);filter:none}
+  10%,18%{fill:#e4002b;opacity:1;transform:translateY(-5px) scale(1.07);filter:drop-shadow(0 2px 5px rgba(228,0,43,.2))}
+}
+@keyframes stage-word-choose{
+  0%,30%,46%,100%{fill:#626b74;opacity:.72;transform:translateY(0) scale(1);filter:none}
+  33%,42%{fill:#e4002b;opacity:1;transform:translateY(-5px) scale(1.07);filter:drop-shadow(0 2px 5px rgba(228,0,43,.2))}
+}
+@keyframes stage-word-move{
+  0%,52%,68%,100%{fill:#626b74;opacity:.72;transform:translateY(0) scale(1);filter:none}
+  55%,64%{fill:#e4002b;opacity:1;transform:translateY(-5px) scale(1.07);filter:drop-shadow(0 2px 5px rgba(228,0,43,.2))}
+}
+@keyframes stage-underline-think{
+  0%,8%,22%,100%{stroke:#aab1b7;stroke-width:1.5;opacity:.45;stroke-dashoffset:78}
+  10%,18%{stroke:#e4002b;stroke-width:2.6;opacity:1;stroke-dashoffset:0}
+}
+@keyframes stage-underline-choose{
+  0%,30%,46%,100%{stroke:#aab1b7;stroke-width:1.5;opacity:.45;stroke-dashoffset:78}
+  33%,42%{stroke:#e4002b;stroke-width:2.6;opacity:1;stroke-dashoffset:0}
+}
+@keyframes stage-underline-move{
+  0%,52%,68%,100%{stroke:#aab1b7;stroke-width:1.5;opacity:.45;stroke-dashoffset:78}
+  55%,64%{stroke:#e4002b;stroke-width:2.6;opacity:1;stroke-dashoffset:0}
+}
+@keyframes stage-ring-think{
+  0%,8%,22%,100%{stroke:#c4cbd0;transform:scale(1)}
+  10%,18%{stroke:#e4002b;transform:scale(1.22)}
+}
+@keyframes stage-core-think{
+  0%,8%,22%,100%{fill:#9da6ad;transform:scale(1)}
+  10%,18%{fill:#e4002b;transform:scale(1.45)}
+}
+@keyframes stage-halo-choose{
+  0%,30%,46%,100%{opacity:.07;transform:scale(.82)}
+  33%,42%{opacity:.3;transform:scale(1.22)}
+}
+@keyframes stage-ring-choose{
+  0%,30%,46%,100%{stroke:#f0c5cd;transform:scale(1)}
+  33%,42%{stroke:#e4002b;transform:scale(1.18)}
+}
+@keyframes stage-ring-move{
+  0%,52%,68%,100%{stroke:#c4cbd0;transform:scale(1)}
+  55%,64%{stroke:#e4002b;transform:scale(1.22)}
+}
+@keyframes stage-core-move{
+  0%,52%,68%,100%{fill:#9da6ad;transform:scale(1)}
+  55%,64%{fill:#e4002b;transform:scale(1.45)}
+}
 @keyframes orbit-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes orbit-rotate-reverse{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
 @keyframes arrow-fill{
@@ -291,22 +349,22 @@ h3{font-size:clamp(15px,1.45vw,24px);line-height:1.25;margin-bottom:.55em}
           </polygon>
 
           <g class="flow-nodes">
-            <circle cx="205" cy="300" r="14" fill="#fff" stroke="#c4cbd0" stroke-width="2.5"/>
-            <circle cx="205" cy="300" r="5" fill="#9da6ad"/>
-            <circle class="choose-halo" cx="360" cy="300" r="34" fill="#e4002b" opacity=".12"/>
-            <circle class="choose-core" cx="360" cy="300" r="20" fill="#fff" stroke="#f0c5cd" stroke-width="2"/>
-            <circle cx="360" cy="300" r="9" fill="#e4002b" filter="url(#nodeGlow)"/>
-            <circle cx="520" cy="300" r="14" fill="#fff" stroke="#c4cbd0" stroke-width="2.5"/>
-            <circle cx="520" cy="300" r="5" fill="#9da6ad"/>
+            <circle class="stage-node-ring node-think-ring" cx="205" cy="300" r="14" fill="#fff" stroke="#c4cbd0" stroke-width="2.5"/>
+            <circle class="stage-node-core node-think-core" cx="205" cy="300" r="5" fill="#9da6ad"/>
+            <circle class="choose-halo node-choose-halo" cx="360" cy="300" r="34" fill="#e4002b" opacity=".12"/>
+            <circle class="choose-core node-choose-ring" cx="360" cy="300" r="20" fill="#fff" stroke="#f0c5cd" stroke-width="2"/>
+            <circle class="node-choose-core" cx="360" cy="300" r="9" fill="#e4002b" filter="url(#nodeGlow)"/>
+            <circle class="stage-node-ring node-move-ring" cx="520" cy="300" r="14" fill="#fff" stroke="#c4cbd0" stroke-width="2.5"/>
+            <circle class="stage-node-core node-move-core" cx="520" cy="300" r="5" fill="#9da6ad"/>
           </g>
 
           <g class="flow-words">
-            <text x="205" y="365" text-anchor="middle" class="word word-muted">THINK</text>
-            <text x="360" y="365" text-anchor="middle" class="word word-active">CHOOSE</text>
-            <text x="520" y="365" text-anchor="middle" class="word word-muted">MOVE</text>
-            <path d="M166 384 H244" class="word-underline"/>
-            <path d="M322 384 H398" class="word-underline active"/>
-            <path d="M482 384 H558" class="word-underline"/>
+            <text x="205" y="365" text-anchor="middle" class="word word-think">THINK</text>
+            <text x="360" y="365" text-anchor="middle" class="word word-choose">CHOOSE</text>
+            <text x="520" y="365" text-anchor="middle" class="word word-move">MOVE</text>
+            <path d="M166 384 H244" class="word-underline underline-think"/>
+            <path d="M322 384 H398" class="word-underline underline-choose"/>
+            <path d="M482 384 H558" class="word-underline underline-move"/>
           </g>
           <text x="360" y="545" text-anchor="middle" class="system-caption">THINK · CHOOSE · MOVE</text>
         </svg>
